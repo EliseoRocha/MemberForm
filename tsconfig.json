@@ -1,0 +1,11 @@
+{
+    "files": [
+        "typescript/app.ts"
+    ],
+    "compilerOptions": {
+        "removeComments": true,
+        "outDir": "scripts",
+        "target": "es6",
+        "watch": true
+    }
+}
