@@ -25,8 +25,11 @@ function isValid() {
     if (!validateRequiredElement("last_name", "Last name required!")) {
         isDataValid = false;
     }
-    if (!validateRequiredElement("phone", "Phone number required!")) {
+    let phone = document.getElementById("phone").value;
+    if (!isPhoneNumber("phone")) {
         isDataValid = false;
+        let phoneSpan = document.getElementById("phone").nextElementSibling;
+        phoneSpan.innerText = "Phone must be a valid format!";
     }
     return isDataValid;
 }
@@ -39,4 +42,13 @@ function validateRequiredElement(elemID, errMsg) {
         return false;
     }
     return true;
+}
+function isPhoneNumber(phoneNumber) {
+    phoneNumber = phoneNumber.replace("-", "").replace("(", "").replace(")", "").replace(" ", "");
+    phoneNumber = phoneNumber.replace(/-|\(|\)|\s/g, "");
+    let phonePattern = /^\d{10}$/g;
+    if (phonePattern.test(phoneNumber)) {
+        return true;
+    }
+    return false;
 }

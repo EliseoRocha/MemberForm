@@ -39,8 +39,17 @@ function isValid():boolean{
     if(!validateRequiredElement("last_name", "Last name required!")){
         isDataValid = false;
     }
+    /*
     if(!validateRequiredElement("phone", "Phone number required!")){
         isDataValid = false;
+    }
+    */
+    let phone = (<HTMLInputElement>document.getElementById("phone")).value;
+    if (!isPhoneNumber("phone")) {
+        isDataValid = false;
+        //display the error message
+        let phoneSpan = <HTMLElement>document.getElementById("phone").nextElementSibling;
+        phoneSpan.innerText = "Phone must be a valid format!";
     }
     return isDataValid;
 }
@@ -63,4 +72,30 @@ function validateRequiredElement(elemID:string, errMsg:string):boolean {
         return false;
     }
     return true;
+}
+
+function isPhoneNumber(phoneNumber:string){
+    //method 1: string manipulation
+    //strip out: parenthesis, dashes, spaces
+    //phoneNumber.replace("-", "");
+    //phoneNumber.replace("(", "");
+    
+    //method chaining example
+    phoneNumber = phoneNumber.replace("-", "").replace("(", "").replace(")", "").replace(" ", "");
+
+    //same as above, restated in regular expression
+    phoneNumber = phoneNumber.replace(/-|\(|\)|\s/g, "");
+
+    /*
+    if (phoneNumber.length == 7 || phoneNumber.length == 10) {
+        return true;
+    }
+    return false;
+    */
+   let phonePattern = /^\d{10}$/g;
+   //checks number against pattern
+   if (phonePattern.test(phoneNumber)) {
+       return true;
+   }
+    return false;
 }
