@@ -16,7 +16,6 @@ function validateForm(event){
         //cancel form submission
         event.preventDefault();
     }
-    
 }
 
 function clearErrors(){
@@ -33,6 +32,11 @@ function isValid():boolean{
 
     let isDataValid:boolean = true;
 
+    if(isCorporateSelected("corporate")){
+        //validate company name here
+        isDataValid = true;
+    }
+
     if(!validateRequiredElement("first_name", "First name required!")){
         isDataValid = false;
     }
@@ -45,13 +49,21 @@ function isValid():boolean{
     }
     */
     let phone = (<HTMLInputElement>document.getElementById("phone")).value;
-    if (!isPhoneNumber("phone")) {
+    if (!isPhoneNumber(phone)) {
         isDataValid = false;
         //display the error message
         let phoneSpan = <HTMLElement>document.getElementById("phone").nextElementSibling;
         phoneSpan.innerText = "Phone must be a valid format!";
     }
     return isDataValid;
+}
+
+function isCorporateSelected():boolean{
+    let corpChecked = <HTMLInputElement>RadioNodeList.getElementById(corporate);
+    if (RadioNodeList == ) {
+        
+    }
+    return false;
 }
 
 /**

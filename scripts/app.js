@@ -19,6 +19,9 @@ function clearErrors() {
 }
 function isValid() {
     let isDataValid = true;
+    if (isCorporateSelected("corporate")) {
+        isDataValid = true;
+    }
     if (!validateRequiredElement("first_name", "First name required!")) {
         isDataValid = false;
     }
@@ -26,12 +29,18 @@ function isValid() {
         isDataValid = false;
     }
     let phone = document.getElementById("phone").value;
-    if (!isPhoneNumber("phone")) {
+    if (!isPhoneNumber(phone)) {
         isDataValid = false;
         let phoneSpan = document.getElementById("phone").nextElementSibling;
         phoneSpan.innerText = "Phone must be a valid format!";
     }
     return isDataValid;
+}
+function isCorporateSelected() {
+    let corpChecked = RadioNodeList.getElementById(corporate);
+    if (RadioNodeList == ) {
+    }
+    return false;
 }
 function validateRequiredElement(elemID, errMsg) {
     let elem = document.getElementById(elemID);
