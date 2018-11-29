@@ -32,11 +32,6 @@ function isValid():boolean{
 
     let isDataValid:boolean = true;
 
-    if(isCorporateSelected("corporate")){
-        //validate company name here
-        isDataValid = true;
-    }
-
     if(!validateRequiredElement("first_name", "First name required!")){
         isDataValid = false;
     }
@@ -58,12 +53,18 @@ function isValid():boolean{
     return isDataValid;
 }
 
-function isCorporateSelected():boolean{
-    let corpChecked = <HTMLInputElement>RadioNodeList.getElementById(corporate);
-    if (RadioNodeList == ) {
-        
+function enableText(){
+    let corpChecked = <HTMLInputElement>document.getElementById("corporate");
+    if(corpChecked.checked){
+        (<HTMLInputElement>document.getElementById("company_name")).disabled = false;
     }
-    return false;
+}
+
+function disableText(){
+    let corpChecked = <HTMLInputElement>document.getElementById("corporate");
+    if(!corpChecked.checked){
+        (<HTMLInputElement>document.getElementById("company_name")).disabled = true;
+    }
 }
 
 /**

@@ -27,8 +27,8 @@
 		<fieldset>
 			<legend>Member Information</legend>
 			<label>Membership type:</label>
-			<input type="radio" name="type" id="individual" value="individual" checked>Individual
-			<input type="radio" name="type" id="corporate" value="corporate" >Corporate<br>
+			<input type="radio" name="type" id="individual" value="individual" checked onclick="disableText()">Individual
+			<input type="radio" name="type" id="corporate" value="corporate" onclick="enableText()">Corporate<br>
 			<label for="company_name">Company Name:</label>
 			<input type="text" id="company_name" name="company_name" disabled>
 			<span></span><br>

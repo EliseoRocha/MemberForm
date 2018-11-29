@@ -19,9 +19,6 @@ function clearErrors() {
 }
 function isValid() {
     let isDataValid = true;
-    if (isCorporateSelected("corporate")) {
-        isDataValid = true;
-    }
     if (!validateRequiredElement("first_name", "First name required!")) {
         isDataValid = false;
     }
@@ -36,11 +33,17 @@ function isValid() {
     }
     return isDataValid;
 }
-function isCorporateSelected() {
-    let corpChecked = RadioNodeList.getElementById(corporate);
-    if (RadioNodeList == ) {
+function enableText() {
+    let corpChecked = document.getElementById("corporate");
+    if (corpChecked.checked) {
+        document.getElementById("company_name").disabled = false;
     }
-    return false;
+}
+function disableText() {
+    let corpChecked = document.getElementById("corporate");
+    if (!corpChecked.checked) {
+        document.getElementById("company_name").disabled = true;
+    }
 }
 function validateRequiredElement(elemID, errMsg) {
     let elem = document.getElementById(elemID);
